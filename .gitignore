@@ -1,0 +1,52 @@
+# Git ignore patterns for Robotics Project
+
+# LaTeX temporary files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.vrb
+
+# MATLAB temporary files
+*.asv
+*.m~
+
+# Octave temporary files
+octave-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archives (keep source directories)
+*.zip
+*.tar.gz
+*.rar
+
+# Backup files
+*~
+*.bak
+*.swp
+*.swo
+
+# Empty or template files
+New Text Document*.txt
+
+# Build outputs (keep final PDFs)
+# Note: PROJECT_REPORT.pdf is intentionally kept
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE specific
+.vscode/
+.idea/
+*.code-workspace
