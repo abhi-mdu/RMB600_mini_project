@@ -9,6 +9,7 @@
    - Movement commands
    - MISSING: quat2rotMatrix() function
    - MISSING: MoveL() function
+   - MISSING: MoveJ() function (for RAPID compatibility)
 3. **robot/test.urdf** - Robot model definition
 4. **robot/IRB1600/** - 3D mesh files for visualization
 
@@ -52,6 +53,28 @@ R = [1-2(y²+z²)    2(xy-wz)      2(xz+wy)   ]
    - Solve inverse kinematics for joint angles
    - Update visualization every 5 steps
 4. Plot complete trajectory in red
+
+#### 3. MoveJ(T_start, T_end, robot, toolFrame) Function
+**Purpose**: Simulate joint-space robot motion between two poses
+**Location**: Lines 211-280 in missing_code.m, Lines 173-242 in robot_simulation.m
+
+**Key Features**:
+- Joint-space linear interpolation (each joint moves independently)
+- Minimal IK computation (only 2 IK calls vs 30 for MoveL)
+- Curved path in Cartesian space
+- Faster and more efficient motion
+- Real-time 3D visualization
+- Trajectory plotting in blue
+- Matches RAPID MoveJ behavior
+
+**Algorithm**:
+1. Solve IK for start and end poses (get joint configurations)
+2. Create 30 interpolation points in joint space
+3. For each point:
+   - Linearly interpolate joint angles: q(t) = (1-t)·q₀ + t·q₁
+   - Use forward kinematics to get Cartesian position
+   - Update visualization every 10 steps
+4. Plot complete trajectory in blue (curved path)
 
 #### 3. Fixed URDF Path
 **Changed**: 'abbIrb1600.urdf' → 'robot/test.urdf'

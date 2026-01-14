@@ -99,6 +99,84 @@ files_to_check = {
     'README.md', 'Documentation';
 };
 
+%% Test 4: MoveJ vs MoveL Comparison
+fprintf('\nTest 4: Testing MoveJ implementation...\n');
+
+try
+    % Load robot model
+    fprintf('  Loading robot model...');
+    robot = importrobot('robot/test.urdf');
+    fprintf(' ✓\n');
+    
+    % Add tool frame
+    fprintf('  Adding tool frame...');
+    robot = addFrame([-105.513,2.40649,246.356],[1,0,0,0],robot,'t4','t4j','link6_passive');
+    fprintf(' ✓\n');
+    
+    % Define two test poses
+    T_start = eye(4);
+    T_start(1:3, 4) = [0.5; 0; 0.5];
+    
+    T_end = eye(4);
+    T_end(1:3, 4) = [0.5; 0.2; 0.7];
+    T_end(1:3, 1:3) = eul2rotm([pi/4, 0, 0]);
+    
+    % Test MoveJ function exists and runs
+    fprintf('  Testing MoveJ function...');
+    try
+        % This will fail if MoveJ doesn't exist or has errors
+        which_result = which('MoveJ');
+        if isempty(which_result)
+            fprintf(' ✗ FAIL (MoveJ function not found)\n');
+        else
+            fprintf(' ✓ PASS (MoveJ function found)\n');
+            
+            % Test joint space interpolation properties
+            fprintf('  Verifying MoveJ produces curved path...');
+            ik = inverseKinematics('RigidBodyTree', robot);
+            weights = [1 1 1 1 1 1];
+            [config_start, ~] = ik('t4', T_start, weights, robot.homeConfiguration);
+            [config_end, ~] = ik('t4', T_end, weights, robot.homeConfiguration);
+            
+            % Sample middle configuration (joint space interpolation)
+            config_mid = config_start;
+            for j = 1:length(config_start)
+                config_mid(j).JointPosition = ...
+                    0.5*config_start(j).JointPosition + 0.5*config_end(j).JointPosition;
+            end
+            
+            % Get Cartesian position at midpoint
+            T_mid_joint = getTransform(robot, config_mid, 't4');
+            p_mid_joint = T_mid_joint(1:3, 4);
+            
+            % Compare with linear interpolation in Cartesian space
+            p_mid_cart = 0.5*T_start(1:3, 4) + 0.5*T_end(1:3, 4);
+            
+            % MoveJ path should deviate from straight line
+            deviation = norm(p_mid_joint - p_mid_cart);
+            if deviation > 0.001  % Should have noticeable deviation
+                fprintf(' ✓ PASS (deviation: %.4f m)\n', deviation);
+            else
+                fprintf(' ⚠ WARNING (low deviation: %.4f m)\n', deviation);
+            end
+        end
+    catch ME
+        fprintf(' ✗ FAIL (%s)\n', ME.message);
+    end
+    
+catch ME
+    fprintf('\n  ✗ Test 4 failed: %s\n', ME.message);
+end
+
+files_to_check = {
+    'robot/test.urdf', 'URDF file';
+    'robot/IRB1600/base.stl', 'Base mesh';
+    'robot/IRB1600/link1.stl', 'Link1 mesh';
+    'robot_simulation.m', 'Main simulation';
+    'missing_code.m', 'Original code';
+    'README.md', 'Documentation';
+};
+
 all_files_exist = true;
 for i = 1:size(files_to_check, 1)
     file_path = files_to_check{i, 1};

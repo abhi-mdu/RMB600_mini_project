@@ -70,6 +70,17 @@ Simulates linear motion between two poses.
   - Inverse kinematics to compute joint angles
   - Real-time visualization of robot motion
 
+#### `MoveJ(T_start, T_end, robot, toolFrame)`
+Simulates joint-space motion between two poses.
+- **T_start**: Starting 4×4 transformation matrix
+- **T_end**: Ending 4×4 transformation matrix
+- Performs:
+  - Linear interpolation in joint space
+  - Each joint moves independently at constant velocity
+  - Results in curved path in Cartesian space
+  - Faster motion compared to MoveL
+  - Real-time visualization with blue trajectory line
+
 ## Drawing Task
 The robot draws a pentagonal shape by moving through these target points:
 1. **p10**: Starting position (above the surface)
@@ -198,7 +209,7 @@ This simulation demonstrates:
 
 ## Future Enhancements
 - [ ] Add velocity and acceleration profiles
-- [ ] Implement joint-space motion (MoveJ)
+- [x] Implement joint-space motion (MoveJ)
 - [ ] Add collision detection
 - [ ] Export trajectory data to CSV
 - [ ] Create animation video export

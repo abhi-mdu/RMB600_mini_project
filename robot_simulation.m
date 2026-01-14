@@ -44,9 +44,9 @@ grid on;
 % Simulate the RAPID draw() procedure
 fprintf('Starting robot drawing simulation...\n');
 
-% Move to starting position
-fprintf('Moving to p10...\n');
-MoveL(getTransform(robot,robot.homeConfiguration,"t4"),getTransform(robot,config,"p10"),robot,'t4');
+% Move to starting position (using MoveJ for initial positioning)
+fprintf('Moving to p10 (joint space)...\n');
+MoveJ(getTransform(robot,robot.homeConfiguration,"t4"),getTransform(robot,config,"p10"),robot,'t4');
 
 % Draw the shape (pentagon)
 fprintf('Drawing shape...\n');
@@ -206,5 +206,79 @@ function MoveL(T_start, T_end, robot, toolFrame)
     % Plot final trajectory line
     hold on;
     plot3(trajectory(1,:), trajectory(2,:), trajectory(3,:), 'r-', 'LineWidth', 2);
+    hold off;
+end
+
+function MoveJ(T_start, T_end, robot, toolFrame)
+    % Joint-space motion from start to end transformation
+    % T_start: 4x4 start transformation matrix
+    % T_end: 4x4 end transformation matrix
+    % robot: robot model
+    % toolFrame: name of the tool frame
+    % 
+    % In MoveJ, each joint interpolates independently, resulting in
+    % a curved path in Cartesian space but faster motion
+    
+    % Setup inverse kinematics
+    ik = inverseKinematics('RigidBodyTree', robot);
+    weights = [1 1 1 1 1 1];
+    initialGuess = robot.homeConfiguration;
+    
+    % Solve IK for start and end poses
+    try
+        [config_start, ~] = ik(toolFrame, T_start, weights, initialGuess);
+        [config_end, ~] = ik(toolFrame, T_end, weights, robot.homeConfiguration);
+    catch ME
+        error('Failed to find IK solution for start/end pose: %s', ME.message);
+    end
+    
+    % Number of interpolation points
+    num_points = 30;
+    
+    % Create or get figure for visualization
+    if isempty(findobj('Type', 'figure', 'Name', 'Robot Motion'))
+        figure('Name', 'Robot Motion', 'NumberTitle', 'off');
+    else
+        figure(findobj('Type', 'figure', 'Name', 'Robot Motion'));
+    end
+    
+    % Trajectory storage (for Cartesian path)
+    trajectory = zeros(3, num_points);
+    
+    % Interpolate in joint space and move
+    for i = 1:num_points
+        t = (i-1)/(num_points-1);
+        
+        % Linear interpolation in joint space
+        config_interp = config_start;
+        for j = 1:length(config_start)
+            config_interp(j).JointPosition = ...
+                (1-t)*config_start(j).JointPosition + t*config_end(j).JointPosition;
+        end
+        
+        % Get the Cartesian position of tool frame for trajectory visualization
+        T_current = getTransform(robot, config_interp, toolFrame);
+        trajectory(:, i) = T_current(1:3, 4);
+        
+        % Visualize at specific intervals
+        if mod(i, 5) == 0 || i == 1 || i == num_points
+            show(robot, config_interp, 'Visuals', 'on', 'Frames', 'off', 'PreservePlot', false);
+            hold on;
+            plot3(trajectory(1,1:i), trajectory(2,1:i), trajectory(3,1:i), 'b-', 'LineWidth', 2);
+            hold off;
+            title(sprintf('Robot Joint Motion (MoveJ) - Step %d/%d', i, num_points));
+            xlabel('X (m)');
+            ylabel('Y (m)');
+            zlabel('Z (m)');
+            grid on;
+            axis equal;
+            drawnow;
+            pause(0.05);
+        end
+    end
+    
+    % Plot final trajectory line (in blue to distinguish from MoveL)
+    hold on;
+    plot3(trajectory(1,:), trajectory(2,:), trajectory(3,:), 'b-', 'LineWidth', 2);
     hold off;
 end

@@ -66,7 +66,7 @@
     \Large ABB IRB1600 Robot Simulation and Trajectory Planning
 }
 \author{}
-\date{January 6, 2026}
+\date{January 6, 2026 (Updated: January 14, 2026)}
 
 \begin{document}
 
@@ -74,7 +74,7 @@
 \thispagestyle{empty}
 
 \begin{abstract}
-This project successfully implements a complete robot simulation and trajectory planning system for the ABB IRB1600 industrial robot. The primary objectives were to convert RAPID robot programming code to MATLAB/Octave implementation, implement quaternion-based rotation mathematics, develop linear motion planning with spherical linear interpolation (SLERP), and validate all functions through comprehensive testing. Key achievements include implementing \texttt{quat2rotMatrix()} function for quaternion-to-rotation-matrix conversion, implementing \texttt{MoveL()} function for linear Cartesian motion planning, fixing robot model frame references, creating comprehensive test suites with 100\% pass rate, and generating detailed visualization figures. The pentagon drawing path achieved 0.7008~m total distance with perfect linearity (0~m deviation).
+This project successfully implements a complete robot simulation and trajectory planning system for the ABB IRB1600 industrial robot. The primary objectives were to convert RAPID robot programming code to MATLAB/Octave implementation, implement quaternion-based rotation mathematics, develop linear motion planning with spherical linear interpolation (SLERP), and validate all functions through comprehensive testing. Key achievements include implementing \texttt{quat2rotMatrix()} function for quaternion-to-rotation-matrix conversion, implementing \texttt{MoveL()} function for linear Cartesian motion planning, implementing \texttt{MoveJ()} function for joint-space motion planning, fixing robot model frame references, creating comprehensive test suites with 100\% pass rate, and generating detailed visualization figures. The pentagon drawing path achieved 0.7008~m total distance with perfect linearity (0~m deviation).
 \end{abstract}
 
 \newpage
@@ -94,6 +94,7 @@ This project focuses on implementing the mathematical foundations for robot moti
 \begin{enumerate}
     \item \textbf{Orientation Representation}: Converting between quaternions and rotation matrices
     \item \textbf{Linear Motion Planning}: Generating smooth Cartesian trajectories
+    \item \textbf{Joint-Space Motion}: Implementing efficient joint-space motion (MoveJ)
     \item \textbf{Interpolation}: Using SLERP for constant angular velocity orientation changes
     \item \textbf{Validation}: Comprehensive testing against known results
 \end{enumerate}
