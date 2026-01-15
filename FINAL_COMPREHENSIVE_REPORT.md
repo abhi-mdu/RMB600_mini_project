@@ -1,12 +1,16 @@
-# ABB IRB1600 Robot Simulation Project
-## Complete Implementation Report with Visual Documentation
+# The Robot Motion Kernel
 
 ---
 
-**Project**: RMB600 Mini Project - Industrial Robot Programming  
-**Institution**: Masters Program in Robotics  
+**Authors**:  
+Jinsha Anna Antony  
+Katherine Rajala  
+Abhishek Kumar
+
+**Course**: Robot Modelling  
+**Institution**: University of West Sweden, Trollhättan  
 **Date**: January 15, 2026  
-**Author**: Graduate Student  
+**Project**: RMB600 Mini Project - ABB IRB1600 Robot Simulation  
 **Repository**: github.com/abhi-mdu/RMB600_mini_project
 
 ---
