@@ -34,7 +34,7 @@ This comprehensive report documents the successful implementation of industrial 
 - 1500 ms (MoveL) reduced to 100 ms (MoveJ)
 
 ✅ **Complete Documentation**
-- 8 professional figures generated
+- 10 professional figures generated (including all visualizations)
 - Comprehensive test suite (100% pass rate)
 - Academic-quality report and presentation
 
@@ -170,6 +170,15 @@ end
 2. **Scalar-First Convention**: Matches MATLAB/robotics standards
 3. **Vectorized Operations**: Maximizes MATLAB performance
 
+![Figure 2: Quaternion to Rotation Matrix Visualization](figures/fig2_quaternion_visualization.png)
+**Figure 2**: *Visual representation of quaternion-to-rotation-matrix conversion. Left: heatmap showing the numerical values of the 3×3 rotation matrix. Right: 3D visualization depicting the rotation of coordinate axes (solid lines = original, dashed lines = rotated). The example shows a 45° rotation about the Z-axis.*
+
+**Visualization Features:**
+- Matrix element values displayed with 3 decimal precision
+- Color-coded heatmap for intuitive value interpretation
+- 3D axis rotation clearly shows the geometric transformation
+- Validates both numerical accuracy and geometric correctness
+
 #### 2.1.2 Validation Results
 
 Our implementation was validated against multiple test cases:
@@ -281,6 +290,14 @@ MoveJ interpolates directly in joint space for faster repositioning:
 - **IK Calls**: 2 (only start/end configurations)
 - **Execution Time**: ~100 ms
 - **Use Case**: Rapid repositioning between work zones
+
+![Figure 7: MoveJ vs MoveL Side-by-Side Comparison](figures/fig7_comparison.png)
+**Figure 7**: *Direct side-by-side comparison of MoveJ (left) and MoveL (right) trajectories. The MoveJ path shows natural joint-space motion with a curved Cartesian trajectory, while MoveL maintains a perfectly straight line in Cartesian space. This visualization clearly demonstrates the fundamental trade-off: MoveJ sacrifices path straightness for computational efficiency (15x faster), while MoveL prioritizes path accuracy at the cost of more IK computations.*
+
+**Comparison Highlights:**
+- **Left (MoveJ)**: Curved path, minimal computation, rapid execution
+- **Right (MoveL)**: Straight path, intensive computation, precise control
+- **Key Insight**: Choose MoveJ for repositioning, MoveL for drawing/welding
 
 #### 2.3.3 Pentagon Drawing Task
 
@@ -690,15 +707,15 @@ All figures have been generated and validated:
 | Figure | Filename | Purpose | Status |
 |--------|----------|---------|--------|
 | **Figure 1** | fig1_error_message.png | Initial problem state | ✅ Complete |
+| **Figure 2** | fig2_quaternion_visualization.png | Quaternion visualization | ✅ Complete |
 | **Figure 3** | fig3_test_results.png | Test validation results | ✅ Complete |
 | **Figure 4** | fig4_movl_path.png | MoveL linear path | ✅ Complete |
 | **Figure 5** | fig5_slerp_comparison.png | SLERP vs linear | ✅ Complete |
 | **Figure 6** | fig6_movej_path.png | MoveJ joint-space path | ✅ Complete |
+| **Figure 7** | fig7_comparison.png | MoveJ vs MoveL comparison | ✅ Complete |
 | **Figure 8** | fig8_frame_hierarchy.png | Frame structure | ✅ Complete |
 | **Figure 9** | fig9_pentagon_path.png | Complete pentagon | ✅ Complete |
 | **Figure 10** | fig10_performance_chart.png | Performance comparison | ✅ Complete |
-
-**Note**: Figures 2 (Quaternion Visualization) and 7 (Side-by-side Comparison) can be generated if needed but are not critical for report completeness.
 
 ### 7.2 Media Files Location
 
@@ -706,16 +723,18 @@ All figures are organized in the `figures/` directory:
 
 ```
 figures/
-├── fig1_error_message.png (72.76 KB)
+├── fig1_error_message.png (73.12 KB)
+├── fig2_quaternion_visualization.png (146.06 KB)
 ├── fig3_test_results.png (151.83 KB)
 ├── fig4_movl_path.png (171.24 KB)
 ├── fig5_slerp_comparison.png (199.81 KB)
 ├── fig6_movej_path.png (180.91 KB)
+├── fig7_comparison.png (109.68 KB)
 ├── fig8_frame_hierarchy.png (126.64 KB)
 ├── fig9_pentagon_path.png (173.24 KB)
 └── fig10_performance_chart.png (103.35 KB)
 
-Total: 8 figures, 1179.78 KB
+Total: 10 figures, 1435.12 KB
 ```
 
 ---
@@ -969,12 +988,12 @@ This project was completed as part of the RMB600 course requirements. Special th
 ---
 
 **Document Information:**
-- **Version**: 1.0 (Final)
+- **Version**: 2.0 (Final - Complete)
 - **Generated**: January 15, 2026
 - **Format**: Markdown with embedded PNG figures
-- **Page Count**: ~45 pages (when rendered to PDF)
-- **Word Count**: ~12,500 words
-- **Figure Count**: 8 high-resolution PNG images
+- **Page Count**: ~50 pages (when rendered to PDF)
+- **Word Count**: ~13,000 words
+- **Figure Count**: 10 high-resolution PNG images (complete set)
 
 ---
 
