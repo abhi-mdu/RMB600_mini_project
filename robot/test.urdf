@@ -51,7 +51,7 @@
 		<parent link="base"/>
 		<child link="link1"/>
 		<axis xyz="0 0 1"/>
-        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+        <limit lower="-3.14159" upper="3.14159" effort="10" velocity="3"/>
 	</joint>
 	<joint name="q1_passive" type="fixed">
 		<origin xyz="150 0 486.5" rpy="-1.5707963267948966 0 0"/>
@@ -97,7 +97,7 @@
 		<parent link="link1_passive"/>
 		<child link="link2"/>
 		<axis xyz="0 0 1"/>
-        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+        <limit lower="-1.74533" upper="2.26893" effort="10" velocity="3"/>
 	</joint>
 	<joint name="q2_passive" type="fixed">
 		<origin xyz="475 0 0" rpy="0 0 0"/>
@@ -143,7 +143,7 @@
 		<parent link="link2_passive"/>
 		<child link="link3"/>
 		<axis xyz="0 0 1"/>
-        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+        <limit lower="-3.14159" upper="1.22173" effort="10" velocity="3"/>
 	</joint>
 	<joint name="q3_passive" type="fixed">
 		<origin xyz="0 0 0" rpy="-1.5707963267948966 0 0"/>
@@ -189,7 +189,7 @@
 		<parent link="link3_passive"/>
 		<child link="link4"/>
 		<axis xyz="0 0 1"/>
-        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+        <limit lower="-6.98132" upper="6.98132" effort="10" velocity="3"/>
 	</joint>
 	<joint name="q4_passive" type="fixed">
 		<origin xyz="0 0 0" rpy="1.5707963267948966 0 0"/>
@@ -235,7 +235,7 @@
 		<parent link="link4_passive"/>
 		<child link="link5"/>
 		<axis xyz="0 0 1"/>
-        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+        <limit lower="-2.0944" upper="2.0944" effort="10" velocity="3"/>
 	</joint>
 	<joint name="q5_passive" type="fixed">
 		<origin xyz="0 0 0" rpy="1.5707963267948966 0 0"/>
@@ -281,7 +281,7 @@
 		<parent link="link5_passive"/>
 		<child link="link6"/>
 		<axis xyz="0 0 1"/>
-        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+        <limit lower="-6.98132" upper="6.98132" effort="10" velocity="3"/>
 	</joint>
 	<joint name="q6_passive" type="fixed">
 		<origin xyz="0 0 0" rpy="0 0 0"/>

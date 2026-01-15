@@ -48,9 +48,31 @@ fprintf('Starting robot drawing simulation...\n');
 fprintf('Moving to p10 (joint space)...\n');
 MoveJ(getTransform(robot,robot.homeConfiguration,"t4"),getTransform(robot,config,"p10"),robot,'t4');
 
+% PAUSE FOR SCREENSHOT 1
+fprintf('\n========================================\n');
+fprintf('SCREENSHOT 1: MoveJ Path (Blue)\n');
+fprintf('========================================\n');
+fprintf('The robot has moved using MoveJ (joint space).\n');
+fprintf('CAPTURE NOW: fig6_movej_path.png\n');
+fprintf('Command: exportgraphics(gcf, ''fig6_movej_path.png'', ''Resolution'', 300);\n\n');
+input('Press ENTER after capturing fig6_movej_path.png...', 's');
+fprintf('\n');
+
 % Draw the shape (pentagon)
 fprintf('Drawing shape...\n');
 MoveL(getTransform(robot,config,"p10"),getTransform(robot,config,"p20"),robot,'t4');
+
+% PAUSE FOR SCREENSHOT 2
+fprintf('\n========================================\n');
+fprintf('SCREENSHOT 2: MoveL Path (Red)\n');
+fprintf('========================================\n');
+fprintf('The robot has moved using MoveL (linear path).\n');
+fprintf('CAPTURE NOW: fig4_movel_path.png\n');
+fprintf('Command: exportgraphics(gcf, ''fig4_movel_path.png'', ''Resolution'', 300);\n\n');
+input('Press ENTER after capturing fig4_movel_path.png...', 's');
+fprintf('\n');
+
+% Continue drawing
 MoveL(getTransform(robot,config,"p20"),getTransform(robot,config,"p30"),robot,'t4');
 MoveL(getTransform(robot,config,"p30"),getTransform(robot,config,"p40"),robot,'t4');
 MoveL(getTransform(robot,config,"p40"),getTransform(robot,config,"p50"),robot,'t4');
@@ -60,6 +82,16 @@ MoveL(getTransform(robot,config,"p50"),getTransform(robot,config,"p60"),robot,'t
 fprintf('Returning to start position...\n');
 MoveL(getTransform(robot,config,"p60"),getTransform(robot,config,"p20"),robot,'t4');
 MoveL(getTransform(robot,config,"p20"),getTransform(robot,config,"p10"),robot,'t4');
+
+% PAUSE FOR SCREENSHOT 3
+fprintf('\n========================================\n');
+fprintf('SCREENSHOT 3: Complete Pentagon Path\n');
+fprintf('========================================\n');
+fprintf('The robot has completed the full pentagon drawing.\n');
+fprintf('CAPTURE NOW: fig9_pentagon_path.png\n');
+fprintf('Command: exportgraphics(gcf, ''fig9_pentagon_path.png'', ''Resolution'', 300);\n\n');
+input('Press ENTER after capturing fig9_pentagon_path.png...', 's');
+fprintf('\n');
 
 fprintf('Drawing complete!\n');
 
