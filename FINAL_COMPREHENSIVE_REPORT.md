@@ -10,8 +10,9 @@ Abhishek Kumar
 **Course**: Robot Modelling  
 **Institution**: University of West Sweden, Trollhättan  
 **Date**: January 15, 2026  
-**Project**: RMB600 Mini Project - ABB IRB1600 Robot Simulation  
-**Repository**: github.com/abhi-mdu/RMB600_mini_project
+**Project**: RMB600 Mini Project - ABB IRB1600 Robot Simulation
+
+**MATLAB Online Access**: https://drive.mathworks.com/sharing/6aab9a91-d00f-461e-b031-61f1169b1f2d
 
 ---
 
@@ -951,15 +952,6 @@ Figures saved to figures/figures/ instead of figures/
 ```
 **Solution**: Reorganized directory structure, consolidated all PNGs to `figures/`.
 
-### 9.5 Contact and Support
-
-**Project Repository**: github.com/abhi-mdu/RMB600_mini_project  
-**Course**: RMB600 - Advanced Robotics  
-**Institution**: Masters Program in Robotics  
-**Date**: January 2026
-
-For questions or issues, please open a GitHub issue or contact through the course portal.
-
 ---
 
 ## Acknowledgments
@@ -988,16 +980,6 @@ This project was completed as part of the RMB600 course requirements. Special th
 6. Corke, P. (2017). *Robotics, Vision and Control: Fundamental Algorithms in MATLAB* (2nd ed.). Springer.
 
 7. Lynch, K. M., & Park, F. C. (2017). *Modern Robotics: Mechanics, Planning, and Control*. Cambridge University Press.
-
----
-
-**Document Information:**
-- **Version**: 2.0 (Final - Complete)
-- **Generated**: January 15, 2026
-- **Format**: Markdown with embedded PNG figures
-- **Page Count**: ~50 pages (when rendered to PDF)
-- **Word Count**: ~13,000 words
-- **Figure Count**: 10 high-resolution PNG images (complete set)
 
 ---
 

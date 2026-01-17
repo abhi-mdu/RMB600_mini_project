@@ -1,8 +1,16 @@
 # How to Run in MATLAB Online
 
+## 🔗 Quick Access Link
+**Direct Project Access**: https://drive.mathworks.com/sharing/6aab9a91-d00f-461e-b031-61f1169b1f2d
+
+*Click the link above to open the complete project directly in MATLAB Online with all files ready to run.*
+
+---
+
 ## Step 1: Access MATLAB Online
 1. Go to: https://matlab.mathworks.com/
 2. Sign in with your account
+3. **OR** use the direct link above to access the shared project
 
 ## Step 2: Upload the Script
 1. Click the **Upload** button (top toolbar)

@@ -3,6 +3,11 @@
 ## Overview
 This project simulates an ABB IRB1600 industrial robot performing a drawing task. The simulation converts RAPID programming language (ABB's native robot language) to MATLAB using the Robotics System Toolbox.
 
+## 🔗 Quick Access
+**MATLAB Online Shared Project**: https://drive.mathworks.com/sharing/6aab9a91-d00f-461e-b031-61f1169b1f2d
+
+*Access the complete project files directly in MATLAB Online. Open the link above to view and run all code without local installation.*
+
 ## Project Structure
 ```
 mini_project/

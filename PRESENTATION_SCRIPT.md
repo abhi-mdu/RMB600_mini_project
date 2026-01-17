@@ -181,7 +181,7 @@
 ---
 
 ## 🎤 ABHISHEK KUMAR - Results, Testing & Demo (3-4 min)
-**(Easiest sections - visual demonstrations and conclusions)**
+
 
 ### Slide 9: Pentagon Drawing Demo
 **[Take over - this is your highlight!]**

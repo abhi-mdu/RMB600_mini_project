@@ -4,6 +4,11 @@
 **Status**: Ready to execute  
 **Date**: January 15, 2026
 
+## 🔗 MATLAB Online Access
+**Shared Project Link**: https://drive.mathworks.com/sharing/6aab9a91-d00f-461e-b031-61f1169b1f2d
+
+*Access all project files directly in MATLAB Online without local setup.*
+
 ---
 
 ## What You Have Right Now ✅
